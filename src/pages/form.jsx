@@ -4,7 +4,7 @@ import styles from "../pages/css/form.modulo.css"
 export default function NameForm() {
   const baseData = {
     creatorName: "",
-    food: "",
+    foodName: "",
     category: "",
     image: "",
     recipe: ""
@@ -38,7 +38,7 @@ export default function NameForm() {
       alert(`Invalid Registrant Data`)
     } else {
       console.log("HEREE1")
-      alert(`"${data.food}" recipe has been accepted`)
+      alert(`"${data.foodName}" recipe has been accepted`)
       resetForm()
     }
     e.preventDefault();
@@ -71,8 +71,8 @@ export default function NameForm() {
           required
           className={styles.input}
           type="text"
-          name="food"
-          value={data.food}
+          name="foodName"
+          value={data.foodName}
           onChange={handleChange}
         />
       </label>
