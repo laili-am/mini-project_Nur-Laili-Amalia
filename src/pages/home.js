@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div>
             
-    <div className="coba">
+    <div className="search">
       <form className="search-form">
         <input className="search-bar" type="text"/>
         <button className="search-button" type="submit" style={{
@@ -12,7 +12,7 @@ const Home = () => {
     display: 'block',
     boxSizing: 'border-box',
     height: '30px',
-    borderRadius: '10px',
+    borderRadius: '30px',
     padding: '0 10px',
     marginTop: '5px',
     fontSize: '16px',
