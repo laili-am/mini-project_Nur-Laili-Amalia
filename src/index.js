@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { ApolloProvider } from "@apollo/client";
-import { client } from '../src/components/apollo-client';
+import client  from '../src/components/apollo-client';
 
 const store = configureStore({
   reducer: {

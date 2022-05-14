@@ -1,4 +1,4 @@
-import { ApolloClient, InMemoryCache} from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: 'https://my-recipe.hasura.app/v1/graphql',

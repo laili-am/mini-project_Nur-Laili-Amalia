@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const GETMyRecipe = gql`
+export const GETMyRecipe = gql`
 query MyQuery {
 recipe_by_pk(id: 10) {
   creator_name
@@ -11,7 +11,7 @@ recipe_by_pk(id: 10) {
 }
 }
 `
-const GETbyid = gql`
+export const GETbyid = gql`
   query MyQuery($id: Int!) {
     list_recipe(where: { id: { _eq: $id } }) {
         creator_name
@@ -22,7 +22,7 @@ const GETbyid = gql`
     }
   }
 `;
-const DELETE = gql`
+export const DELETE = gql`
   mutation MyMutation($id: Int!) {
     delete_list_recipe_by_pk(id: $id) {
       id
@@ -30,7 +30,7 @@ const DELETE = gql`
   }
 `;
 
-const INSERT = gql`
+export const INSERT = gql`
   mutation MyMutation($creator_name: String!, $food_name: String!, $id_category: Int!, $recipe: String!, $upload_image: String!) {
     insert_list_recipe(
       objects: { creator_name: $creator_name, food_name: $food_name, id_category: $id_category, recipe: $recipe, upload_image: $upload_image }
@@ -41,7 +41,7 @@ const INSERT = gql`
     }
   }
 `;
-const EDITdata = gql`
+export const EDITdata = gql`
   mutation MyMutation(
     $id: Int!
     $creator_name: String!
@@ -58,4 +58,3 @@ const EDITdata = gql`
     }
   }
 `;
-export { GETMyRecipe, GETbyid, DELETE, INSERT, EDITdata };
