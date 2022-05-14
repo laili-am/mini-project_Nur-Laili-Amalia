@@ -1,0 +1,79 @@
+.centerForm {
+    margin: 50px 600px;
+  }
+  
+  input[type=radio] {
+    margin: 5px 3px 8px 5px;
+  }
+  
+  input[type=text], input[type=number], input[type=file], select {
+    width: 100%;
+    display: block;
+    /* width: 500px; */
+    box-sizing: border-box;
+    height: 35px;
+    border-radius: 30px;
+    margin-bottom: 8px;
+    padding: 0 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    background: #002148;
+    border-color: #002148;
+    color: white;
+  }
+  
+  textarea {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    height: 90px;
+    border-radius: 10px;
+    padding: 0 10px;
+    margin-top: 5px;
+    font-size: 16px;
+    background: #002148;
+    border-color: #002148;
+    color: white;
+  }
+  
+  button, input[type=submit] {
+    width: 120px;
+    height: 30px;
+    font-size: 14px;
+    border-radius: 30px;
+    font-weight: bold;
+    border-style: solid;
+  }
+  
+  button:hover, input[type=submit]:hover {
+    cursor: pointer;
+  }
+  
+  .buttonSubmit, input[type=submit] {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background: #002148;
+    border-color: #002148;
+    color: white;
+  }
+  
+  .buttonSubmit:hover, input[type=submit]:hover {
+    background: transparent;
+    color: #002148;
+  }
+  
+  .buttonReset {
+    background: #002148;
+    border-color: #002148;
+    color: white;
+  }
+  
+  .buttonReset:hover {
+    background: transparent;
+    color: #002148;
+  }
+  
+  .errorMassage {
+    color: #002148;
+  }
