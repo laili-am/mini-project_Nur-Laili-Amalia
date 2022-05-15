@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styles from "../pages/css/form.module.css"
+import styles from "./form.css"
 
 export default function NameForm() {
   const baseData = {
