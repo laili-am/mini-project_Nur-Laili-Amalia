@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./navbar.css";
 import logo from './images/logo.png';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -11,59 +13,51 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
+          <Link to="/" className="nav-logo">
             <img src={logo} className="nav-logo" alt="logo"/>
-            <i className="fas fa-code"></i>
-          </NavLink>
+          </Link>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <NavLink
-                exact
+              <Link
                 to="/home"
-                activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
                 Home
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
+              <Link
                 to="/about"
-                activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
                 About
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
+              <Link
                 to="/addrecipe"
-                activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
                 Add Recipe
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
+              <Link
                 to="/myrecipe"
-                activeClassName="active"
                 className="nav-links"
                 onClick={handleClick}
               >
                 My Recipe
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <div className="nav-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
+          <i className={click ? "fas fa-times" : "fas fa-bars"} style={{"color": '#FFEE1A'}}></i>
+          
           </div>
         </div>
       </nav>

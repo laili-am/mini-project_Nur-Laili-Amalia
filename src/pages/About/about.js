@@ -1,16 +1,15 @@
 import React from 'react';
 import "./about.css";
+import text from '../About/images/text.png'
 
 const About = () => {
   return (
     <div className='about'>
       <div className='about-overlay'>
-        <h1>About Us</h1>
+        <img src={text} className="text" alt="text" style={{'width':'350px', 'marginBottom':'10px', 'marginTop':'100px'}}/>
+        <h1>Share your Own Recipe</h1>
         <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy text ever 
-        since the 1500s, when an unknown printer took a galley of type 
-        and scrambled it to make a type specimen book.
+
         </p>
       </div>
     </div>

@@ -1,7 +1,11 @@
-import React, { useState, useRef } from 'react';
-import styles from "./form.css"
+import { useMutation } from '@apollo/client';
+import React, { useState, useRef, useEffect } from 'react';
+import styles from '../AddRecipe/form.css';
+import { INSERT } from '../../GraphQL/gql';
+import { storage } from  '../../firebase.config';
+import swal from 'sweetalert';
 
-export default function NameForm() {
+export default function AddRecipe() {
   const baseData = {
     creatorName: "",
     foodName: "",
@@ -17,6 +21,7 @@ export default function NameForm() {
   const [data, setData] = useState(baseData);
   const [errorMassage, setErrorMassage] = useState(baseError);
   const regexNama = /^[A-Za-z ]*$/
+  const [insertData,{data:dataInsert,loading,error}]=useMutation(INSERT)
 
   const handleChange = e => {
     const name = e.target.name;
@@ -32,14 +37,46 @@ export default function NameForm() {
     setData({...data, [name]: value});
   };
 
+  const [file, setFile] = useState();
+  const [url, setURL] = useState();
+
+  const handleFileUpload = async (e) => {
+    if (e.target.files[0]) setFile(e.target.files[0]);
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const path = `/image/${file.name}`;
+    const ref = storage.ref(path);
+    await ref.put(file);
+    const url = await ref.getDownloadURL();
+    setURL(url);
+    setFile(null);
+    return swal("Image has been accepted", "Upload Success!", "success");
+  };
+  console.log(url);
+
   const handleSubmit = e => {
     if (errorMassage.creatorName !== '') {
       console.log("HEREEE")
-      alert(`Invalid Registrant Data`)
+      swal("Check Again!", "Invalid Registrant Data", "warning");
     } else {
       console.log("HEREE1")
-      alert(`"${data.foodName}" recipe has been accepted`)
+      const objects={
+        
+      }
+      insertData({
+        variables:{
+          creator_name:data.creatorName,
+          food_name:data.foodName,
+          id_category:data.category,
+          recipe:data.recipe,
+          upload_image:url
+        }
+      })
+      swal(`"${data.foodName}" recipe has been accepted`, "Upload Success!", "success");
       resetForm()
+
     }
     e.preventDefault();
   };
@@ -52,7 +89,8 @@ export default function NameForm() {
 
   return (
     <>
-    <h1 style={{"textAlign":"center", "marginTop":"60px", "fontSize":"50px"}}>Add Recipe</h1>
+    <h1 style={{"textAlign":"center", "marginTop":"60px", "fontSize":"50px", "fontFamily":"Sarala", "color":"#002148"}}>Add Recipe</h1>
+    <div className='tengah'>
     <form onSubmit={handleSubmit} className={styles.centerForm}>
       <label>
         Creator Name
@@ -86,9 +124,9 @@ export default function NameForm() {
           onChange={handleChange}
         >
         <option disabled value="">Select One</option>
-        <option value="indonesian">Indonesian Food</option>
-        <option value="western">Western Food</option>
-        <option value="asian">Asian Food</option>
+        <option value="1">Indonesian Food</option>
+        <option value="2">Western Food</option>
+        <option value="3">Asian Food</option>
         </select>
       </label>
       <label>
@@ -102,14 +140,17 @@ export default function NameForm() {
       </label>
       <label>
         Upload Image
-        <input
+        <br/>
+        <input className='gambar'
           required
           type="file"
           name="image"
           ref={image}
-          onChange={handleChange}
+          onChange={handleFileUpload}
         />
       </label>
+      <br/>
+      <button onClick={handleUpload} className="buttonReset">Upload gambar</button>
       <ul>
         {Object.keys(errorMassage).map(key => {
           if (errorMassage[key] !== "") {
@@ -121,6 +162,7 @@ export default function NameForm() {
       <input type="submit" value="Submit" />
       <button className={styles.buttonReset} onClick={resetForm}>Reset</button>
       </form>
+    </div>
     </>
   );
 };

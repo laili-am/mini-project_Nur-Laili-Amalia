@@ -1,6 +1,8 @@
-import { getApp, getApps, initializeApp} from "firebase/app"
-import { getFireStore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyAkjCN2mz25tSDVkqIWoIiY6e6IOHu_kFw",
@@ -13,10 +15,11 @@ const firebaseConfig = {
     measurementId: "G-TVDVX92P2X"
   };
 
-  const app = getApps.length > 0 ? getApp() : initializeApp(firebaseConfig);
+  const app = firebase.initializeApp(firebaseConfig);
 
-  const firestore = getFireStore(app);
-  const storage = getStorage(app)
+ // const firestore = getFireStore(app);
+ // const storage = getStorage(app)
+  const storage = firebase.storage();
 
-  export { app, firestore, storage };
+  export { app, storage };
   

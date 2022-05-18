@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter,Routes,Route} from "react-router-dom";
-import About from './pages/about';
-import Home from './pages/home';
-import MyRecipe from './pages/myrecipe';
-import NameForm from './pages/form';
-import NotFound from './pages/NotFound';
-import Navbar from './components/Navbar';
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import About from './pages/About/about';
+import Home from './pages/Home/home';
+import AddRecipe from './pages/AddRecipe/form';
+import NotFound from './pages/NotFound/notfound';
+import MyRecipe from './pages/MyRecipe/myrecipe';
+import Navbar from './components/Navbar/Navbar'
+import FormRecipe from './pages/MyRecipe/formmyrecipe'
+import EditRecipe from './pages/EditRecipe/editrecipe';
 
 function App() {
   return (
@@ -17,9 +19,10 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/about' element={<About/>} />
-        <Route path='/addrecipe' element={<NameForm/>} />
-        <Route path='/myrecipe' element={<MyRecipe/>} />
-        <Route path ="*" element={<NotFound/>}/>
+        <Route path='/addrecipe' element={<AddRecipe/>} />
+        <Route path='/myrecipe' element={<FormRecipe/>} />
+        <Route path='/editrecipe/:id' element={<EditRecipe/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>
     </>
